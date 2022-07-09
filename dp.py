@@ -6,13 +6,6 @@ class Solution:
         self.stack = []
         self.results = []
 
-    def rcsv(self, target: int) -> int:
-        n = len(self.coins)
-        _max = 0
-        for i in range(n):
-            _max = max(_max, self.coins[i] + self.rcsv(target-self.coins[i]))
-            # if target == self.coins[i] + self.rcsv(target-self.coins[i]):
-
     def numberOfCombinations(self, coins: [int], target: int) -> int:
         self.setup(coins)
         n = target+1
@@ -31,7 +24,8 @@ class Solution:
                         dp[i][index] += sum(dp[i-j])
 
         self.dp = dp
-        return sum(dp[target])
+        self.printDp(target)
+        return self.answer()
 
     def printDp(self, target):
         if target == 0:
@@ -48,8 +42,7 @@ class Solution:
                 self.stack.pop()
 
     def answer(self):
-        # return len(self.results)
-        return self.results
+        return len(self.results)
 
 
 solution = Solution()
