@@ -24,8 +24,8 @@ class Solution:
                         dp[i][index] += sum(dp[i-j])
 
         self.dp = dp
-        self.printDp(target)
-        return self.answer()
+        # self.printDp(target)
+        # return self.answer()
 
     def printDp(self, target):
         if target == 0:
@@ -47,10 +47,10 @@ class Solution:
 
 solution = Solution()
 
-coins = [5, 2, 4]
-target = 13
+coins = [1,2,4,5]
+target = 28
 
 # print(solution.numberOfCombinations(coins, target))
-solution.numberOfCombinations(coins, target)
-solution.printDp(target)
-print(solution.answer())
+print(solution.numberOfCombinations(coins, target))
+# solution.printDp(target)
+# print(solution.answer())
