@@ -14,7 +14,8 @@ class Solution:
         # initializing
         dp = [[0]*len(coins) for i in range(n)]
         for index in range(len(coins)):
-            dp[coins[index]][index] = 1
+            if coins[index] < target + 1:
+                dp[coins[index]][index] = 1
 
         for i in range(1, target+1):
             for index in range(len(coins)):
@@ -26,6 +27,10 @@ class Solution:
         self.dp = dp
         # self.printDp(target)
         # return self.answer()
+
+    def _printDp(self, target):
+        for row in self.dp:
+            print(row)
 
     def printDp(self, target):
         if target == 0:
@@ -47,10 +52,8 @@ class Solution:
 
 solution = Solution()
 
-coins = [1,2,4,5]
+coins = [1, 2, 4, 5]
 target = 28
 
-# print(solution.numberOfCombinations(coins, target))
-print(solution.numberOfCombinations(coins, target))
-# solution.printDp(target)
-# print(solution.answer())
+solution.numberOfCombinations(coins, target)
+solution._printDp(target)
