@@ -5,7 +5,7 @@ class Solution:
         self.target = target
         self.memory = [[[] for j in coins] for i in range(1+target)]
 
-    def numberOfCombinations2(self, coins: [int], target: int) -> int:
+    def numberOfCombinations(self, coins: [int], target: int) -> int:
         self.setup(coins, target)
         for index in range(len(coins)):
             if coins[index] < target + 1:
@@ -23,7 +23,7 @@ class Solution:
                             if tmp not in self.memory[i][index]:
                                 self.memory[i][index].append(tmp)
 
-    def printDp2(self, target):
+    def printDp(self, target):
         results = []
         for c in self.memory[target]:
             for li in c:
@@ -40,8 +40,8 @@ target = 28
 
 
 def start():
-    solution.numberOfCombinations2(coins, target)
-    solution.printDp2(target)
+    solution.numberOfCombinations(coins, target)
+    solution.printDp(target)
 
 
 start()
