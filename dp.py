@@ -3,9 +3,6 @@ class Solution:
         import copy
         self.coins = copy.deepcopy(coins)
         self.target = target
-        self.count = len(coins)
-        self.stack = []
-        self.results = []
         self.memory = [[[] for j in coins] for i in range(1+target)]
 
     def numberOfCombinations2(self, coins: [int], target: int) -> int:
