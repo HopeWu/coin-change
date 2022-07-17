@@ -23,14 +23,13 @@ class Solution:
                             if tmp not in self.memory[i][index]:
                                 self.memory[i][index].append(tmp)
 
-    def printDp(self, target):
         results = []
         for c in self.memory[target]:
             for li in c:
                 if li not in results:
                     results.append(li)
-        print(results)
-        print(len(results))
+        # print(results)
+        return len(results)
 
 
 solution = Solution()
@@ -41,7 +40,6 @@ target = 28
 
 def start():
     solution.numberOfCombinations(coins, target)
-    solution.printDp(target)
 
 
 start()
