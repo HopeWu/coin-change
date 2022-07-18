@@ -6,10 +6,15 @@ class Solution:
         import copy
         self.coins = copy.deepcopy(coins)
         self.target = target
+        n = len(coins)
+        self.dp = [[-1]*(target+1) for i in range(n)]
 
     def rcrsv(self, n: int, target: int):
         if target == 0:
             return 1
+
+        if self.dp[n][target] != -1:
+            return self.dp[n][target]
 
         if n - 1 >= 0:
             notTake = self.rcrsv(n-1, target)
@@ -20,7 +25,9 @@ class Solution:
             take = self.rcrsv(n, target - self.coins[n])
         else:
             take = 0
-        return notTake + take
+        result = notTake + take
+        self.dp[n][target] = result
+        return result
 
     def numberOfCombinations(self, coins: [int], target: int) -> int:
         self.setup(coins, target)
