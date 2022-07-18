@@ -4,27 +4,26 @@ public:
         int n=coins.size();
         if(amount==0) return 1;
         
-        vector<vector<int>> dp(n,vector<int>(amount+1));
+        vector<int> prev(amount+1,0);
+        vector<int> curr(amount+1);
+        curr[0]=1;
         
-        for(int i=0;i<n;i++) dp[i][0]=1;
-        
-        
-        for(int j=1;j<=amount;j++)
+        for(int i=0;i<n;i++)
         {
-            for(int i=0;i<n;i++)
+            for(int j=1;j<=amount;j++)
             {
-                int notTake;
-                if(i==0) notTake=0;
-                else notTake=dp[i-1][j];
+                int notTake=prev[j];
                 
                 int take;
-                if(coins[i]<=j) take=dp[i][j-coins[i]];
+                if(coins[i]<=j) take=curr[j-coins[i]];
                 else take=0;
                 
-                dp[i][j]=take+notTake;
+                curr[j]=take+notTake;
             }
+            prev=curr;
         }
         
-        return dp[n-1][amount];
+        return prev[amount];
     }
 };
+
