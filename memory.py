@@ -38,15 +38,17 @@ class Solution:
 def start():
     solution = Solution()
     coins = [1, 2, 4, 5]
-    target = 100
+    file = open("argument", "r")
+    content = file.read(10)
+    target = int(content)
+    s = time.time()
     result = solution.numberOfCombinations(coins, target)
+    e = time.time()
+    print("Time elapsed: ", e-s)
     print(result)
 
 
-s = time.time()
 start()
-e = time.time()
-print("Time elapsed: ", e-s)
 
 
 '''
