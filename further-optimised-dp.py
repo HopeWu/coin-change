@@ -8,18 +8,8 @@ class Solution:
         dp[0] = 1
 
         for i in range(n):
-            for j in range(1, target+1):
-                if i-1 in range(n):
-                    notTake = dp[j]
-                else:
-                    notTake = 0
-
-                if j-coins[i] >= 0:
-                    take = dp[j-coins[i]]
-                else:
-                    take = 0
-
-                dp[j] = notTake + take
+            for j in range(coins[i], target+1):
+                dp[j] += dp[j-coins[i]]
 
         return dp[target]
 
